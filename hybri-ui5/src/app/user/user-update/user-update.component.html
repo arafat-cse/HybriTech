@@ -1,1 +1,68 @@
-<p>user-update works!</p>
+<ui5-dialog header-text="Edit" [open]="isOpen" id="dialog">
+  <ui5-bar slot="header" design="Header">
+    <ui5-title level="H5" slot="startContent">Edit UserPost</ui5-title>
+    <ui5-button
+      class="dialogCloser"
+      design="Transparent"
+      id="closeDialogButton"
+      slot="endContent"
+      (click)="closeDialog()"
+      icon="decline"
+    ></ui5-button>
+  </ui5-bar>
+
+  <app-form-preloader *ngIf="loading"></app-form-preloader>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex align-items-center">
+        <ui5-label show-colon>Active</ui5-label>
+        <ui5-switch
+          [checked]="isActive"
+          (click)="toggleActive($event)"
+        ></ui5-switch>
+      </div>
+      <ui5-label show-colon required>Name</ui5-label>
+
+      <ui5-textarea
+        class="textArea"
+        [(ngModel)]="name"
+        placeholder="User Name"
+        required
+        type="text"
+      ></ui5-textarea>
+
+      <ui5-label show-colon required>E-mail</ui5-label>
+
+      <ui5-textarea
+        class="textArea"
+        [(ngModel)]="email"
+        required
+      ></ui5-textarea>
+      <ui5-label show-colon required>phone</ui5-label>
+      <ui5-textarea
+        class="textArea"
+        [(ngModel)]="phone"
+        required
+      ></ui5-textarea>
+      <!-- <angular-editor
+        [(ngModel)]="email"
+        [config]="editorConfig"
+      ></angular-editor> -->
+    </div>
+  </div>
+  <ui5-toolbar slot="footer">
+    <ui5-toolbar-button
+      design="Emphasized"
+      (click)="updateUser()"
+      [disabled]="formloading"
+      text="Update"
+    >
+    </ui5-toolbar-button>
+
+    <ui5-toolbar-button
+      design="Transparent"
+      text="Cancel"
+      (click)="closeDialog()"
+    ></ui5-toolbar-button>
+  </ui5-toolbar>
+</ui5-dialog>

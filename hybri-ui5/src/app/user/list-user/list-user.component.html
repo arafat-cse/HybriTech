@@ -35,22 +35,12 @@
 
 <app-user-update
   [isOpen]="isEdit"
-  [jobId]="selectedUserId"
-  [jobData]="selectedUserData"
+  [userId]="selectedUserId"
+  [userData]="selectedUserData"
   (close)="closeEditUserModal()"
   (refreshTable)="refreshTable.emit()"
 ></app-user-update>
 
-<!-- <app-job-details
-    [jobId]="selectedUserId"
-    [jobData]="selectedUserData"
-    [isOpen]="isDetails"
-    (close)="closeUserDetailsModal()"
-  ></app-job-details>
-  <app-toast-message
-    [IsOpenToastAlert]="IsOpenToastAlert"
-    [ToastType]="ToastType"
-  ></app-toast-message> -->
 
 <app-user-details
   [userId]="selectedUserId"

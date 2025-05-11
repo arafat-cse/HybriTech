@@ -216,7 +216,7 @@ export class ListUserComponent implements OnInit {
     this.selectedUserId = null;
     this.selectedUserData = null;
     this.refreshTable.emit();
-    // this.loadJobs();
+    // this.loadUser();
   }
 
   closeUserDetailsModal() {
