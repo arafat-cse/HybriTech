@@ -56,7 +56,7 @@ export class ListUserComponent implements OnInit {
   selectedUserData: any = null;
 
   user = new User().deserialize({});
-  User = User;
+  
   constructor(
     private commandService: ServiceService,
     private datePipe: DatePipe,
@@ -66,7 +66,9 @@ export class ListUserComponent implements OnInit {
     this.odata = this.commandService.odata;
     this.Title = "User";
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.odata);
+  }
 
   tableColum() {
     const columns = [
@@ -86,10 +88,17 @@ export class ListUserComponent implements OnInit {
       },
 
       {
-        Header: "Name",
-        accessor: "name",
+        Header: "First Name",
+        accessor: "first_name",
         autoResizable: true,
         className: "custom-class-name",
+      },
+       {
+        Header: "Last Name",
+        accessor: "last_name",
+        autoResizable: true,
+        className: "custom-class-name",
+       
       },
       {
         Header: "Email",
@@ -100,6 +109,12 @@ export class ListUserComponent implements OnInit {
       {
         Header: "Phone",
         accessor: "phone",
+        autoResizable: true,
+        className: "custom-class-name",
+      },
+      {
+        Header: "address",
+        accessor: "address",
         autoResizable: true,
         className: "custom-class-name",
       },
