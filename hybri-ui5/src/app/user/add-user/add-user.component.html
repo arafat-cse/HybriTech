@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <ui5-dialog header-text="new" [open]="isOpen" id="dialog">
   <ui5-bar slot="header" design="Header">
     <ui5-title level="h5" slot="startContent">New</ui5-title>
@@ -15,16 +16,16 @@
   <ui5-message-strip class="w-100 mt-3" design="Critical" *ngIf="errorMassage">
     <ui5-icon name="alert" slot="icon"></ui5-icon> {{ errorMassage }}
   </ui5-message-strip>
-  <section>
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center">
-          <!-- <span> Active: </span> -->
+  <!-- <section class="bg-pink-100 p-6 rounded-lg max-w-md mx-auto mt-6">
+    <div class="flex flex-col space-y-6">
+      <div class="flex space-x-4">
+        <div class="flex-1">
+          <span> Active: </span>
           <ui5-switch checked (click)="toggleAction($event)"></ui5-switch>
         </div>
-        <ui5-label show-colon required>First Name</ui5-label>
+        <ui5-label show-colon required class="block text-sm font-medium text-gray-700">First Name</ui5-label>
         <ui5-input
-          class="input"
+          class="input" class="mt-1 p-2 w-full border border-gray-300 rounded-md"
           [(ngModel)]="User.first_name"
           placeholder="Enter your First"
           required
@@ -32,7 +33,7 @@
         ></ui5-input>
         <ui5-label show-colon required>Last Name</ui5-label>
         <ui5-input
-          class="input"
+          class="input" class="mt-1 p-2 w-full border border-gray-300 rounded-md"
           [(ngModel)]="User.last_name"
           placeholder="Enter your Last"
           required
@@ -64,6 +65,62 @@
           type="text"
         ></ui5-textarea>
       </div>
+    </div>
+  </section> -->
+  
+  <section class=" rounded-lg max-w-md mx-auto">
+    <div class="flex flex-col space-y-6">
+      <div class="flex items-center space-x-2">
+        <span class="text-sm font-medium text-gray-700">Active:</span>
+        <ui5-switch checked (click)="toggleAction($event)"></ui5-switch>
+      </div>
+      <div class="flex space-x-4">
+        <div class="flex-1">
+          <ui5-label show-colon required class="block text-sm font-medium text-gray-700">First Name</ui5-label>
+          <ui5-input
+            [(ngModel)]="User.first_name"
+            placeholder="Enter your First"
+            required
+            type="text"
+          ></ui5-input>
+        </div>
+        <div class="flex-1">
+          <ui5-label show-colon required class="block text-sm font-medium text-gray-700">Last Name</ui5-label>
+          <ui5-input
+            [(ngModel)]="User.last_name"
+            placeholder="Enter your Last"
+            required
+            type="text"
+          ></ui5-input>
+        </div>
+      </div>
+      <div class="flex space-x-4">
+        <div class="flex-1">
+          <ui5-label show-colon required class="block text-sm font-medium text-gray-700">Email</ui5-label>
+          <ui5-input
+            [(ngModel)]="User.email"
+            placeholder="Enter your Email"
+            required
+            type="email"
+          ></ui5-input>
+        </div>
+        <div class="flex-1">
+          <ui5-label show-colon required class="block text-sm font-medium text-gray-700">Phone</ui5-label>
+          <ui5-input
+            [(ngModel)]="User.phone"
+            placeholder="Enter your Phone"
+            required
+            type="tel"
+          ></ui5-input>
+        </div>
+      </div>
+      <ui5-label show-colon required class="block text-sm font-medium text-gray-700">Address</ui5-label>
+          <ui5-textarea    
+            [(ngModel)]="User.address"
+            placeholder="Enter your address"
+            required
+            type="address"
+          ></ui5-textarea>
     </div>
   </section>
   <ui5-toolbar slot="footer">
