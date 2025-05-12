@@ -43,24 +43,24 @@ export class AddUserComponent implements OnInit {
   isAddError: boolean = false;
 
   errorMassage: string = '';
-  name: string = '';
-  gmail: string = '';
-  phone: string = '';
+  // name: string = '';
+  // gmail: string = '';
+  // phone: string = '';
   htmlContent: string = '';
   placeholder: string = '';
   isActive: boolean = true;
-  Userlist: User = new User().deserialize({});
+  User = new User().deserialize({});
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '20rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-  };
+  // editorConfig: AngularEditorConfig = {
+  //   editable: true,
+  //   spellcheck: true,
+  //   height: '20rem',
+  //   minHeight: '5rem',
+  //   placeholder: 'Enter text here...',
+  //   translate: 'no',
+  //   defaultParagraphSeparator: 'p',
+  //   defaultFontName: 'Arial',
+  // };
 
   constructor(
     private commandService: ServiceService,
@@ -78,21 +78,21 @@ export class AddUserComponent implements OnInit {
     }
   }
   insertData() {
-    if (!this.name || !this.gmail) {
+    if (!this.User.first_name || !this.User.email || !this.User.phone) {
       this.errorMassage = 'Please fill all the fields.';
       return;
     }
 
-    const data = {
-      name: this.name,
-      email: this.gmail, // If gmail is user's email
-      phone: this.phone, // Make sure to bind this.phone from your form
-      is_active: this.isActive,
-    };
-    console.log('data', data);
+    // const data = {
+    //   name: this.name,
+    //   email: this.gmail, // If gmail is user's email
+    //   phone: this.phone, // Make sure to bind this.phone from your form
+    //   is_active: this.isActive,
+    // };
+    // console.log('data', data);
 
     this.loading = true;
-    this.commandService.post('Users', data).subscribe(
+    this.commandService.post('Users', this.User).subscribe(
       (response: any) => {
         console.log('response', response);
         this.loading = false;
@@ -113,9 +113,11 @@ export class AddUserComponent implements OnInit {
   }
   rersetForm() {
     this.errorMassage = '';
-    this.name = '';
-    this.gmail = '';
-    this.phone = '';
+    this.User.first_name = '';
+    this.User.last_name = '';
+    this.User.email = '';
+    this.User.phone = '';
+    this.User.address = '';
   }
   closeDialog() {
     this.isOpen = false;
@@ -123,9 +125,11 @@ export class AddUserComponent implements OnInit {
   }
  
   resetForm() {
-    this.gmail = '';
-    this.name = '';
-    this.phone = '';
+    this.User.first_name = '';
+    this.User.last_name = '';
+    this.User.email = '';
+    this.User.phone = '';
+    this.User.address = '';
     this.htmlContent = '';
     this.isActive = true;
   }

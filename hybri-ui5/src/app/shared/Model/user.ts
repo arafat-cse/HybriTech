@@ -64,10 +64,10 @@ export class User implements Deserializable {
   id?: number;
   first_name: string = '';
   last_name: string = '';
- // email: string = '';
-//  phone: string = '';
+ email: string = '';
+ phone: string = '';
   address: string = '';
-  //created_at?: string;
+  created_at?: string;
   updated_at?: string;
   is_active?: boolean;
   deserialize(input: any): this {
@@ -80,7 +80,7 @@ export class User implements Deserializable {
   toOdata(): Object {
     return {
       ...this,
-     // created_at: undefined,
+     created_at: undefined,
       updated_at: undefined,
     };
   }
